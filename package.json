@@ -1,0 +1,34 @@
+{
+  "name": "spa-exercise",
+  "version": "1.0.0",
+  "description": "This is a simple CRUD app to manage a list of images",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "precise-commits",
+    "prettier-all": "prettier --write *.{js,json,css,md}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagox/spa-excercise.git"
+  },
+  "keywords": [
+    "spa",
+    "vanillajs",
+    "express",
+    "api"
+  ],
+  "author": "Santiago Rojo <tiagox@gmail.com>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/tiagox/spa-excercise/issues"
+  },
+  "homepage": "https://github.com/tiagox/spa-excercise#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "husky": "^0.14.3",
+    "mongoose": "^5.2.15",
+    "precise-commits": "^1.0.2",
+    "prettier": "^1.14.2"
+  }
+}

@@ -7,6 +7,7 @@
     "dev-web": "parcel watch --no-cache ./web/index.html",
     "build-web": "parcel build --no-cache ./web/index.html",
     "start": "nodemon",
+    "postinstall": "npm run build-web",
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "precise-commits",
     "prettier-all": "prettier --write *.{js,json,css,md}"

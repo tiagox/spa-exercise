@@ -18,8 +18,12 @@
 
     <script type="text/template" id="itemTemplate">
         <div data-id="{{order}}" class="item">
-            <div class="image-container"><img src="{{image}}" alt="Image"></div>
+            <div class="image-container"><img src="{{image}}" alt="Thumbnail"></div>
             <div class="image-description">{{description}}</div>
+            <div class="image-actions">
+                <button class="edit" data-id="{{_id}}">Edit</button>
+                <button class="delete" data-id="{{_id}}">Delete</button>
+            </div>
         </div>
     </script>
 </body>

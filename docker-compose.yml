@@ -1,0 +1,27 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - '8080:8080'
+    links:
+      - db
+    volumes:
+      - ./:/usr/src/app
+  db:
+    image: 'mongo:latest'
+    ports:
+      - '27017:27017'
+  # This is a container used to seed some initial data in the database.
+  # This will run once and then exit.
+  db-seed:
+    build: ./db-seed
+    links:
+      - db
+  mongo-express:
+    image: mongo-express
+    restart: always
+    links:
+      - db:mongo
+    ports:
+      - 8081:8081

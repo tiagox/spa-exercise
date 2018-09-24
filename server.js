@@ -16,8 +16,18 @@ app.get('/items', (req, res) => {
   ItemModel.find({})
     .sort('order')
     .exec((_, items) => {
-      res.send({ count: items.length, items })
+      res.send({ success: true, count: items.length, items })
     })
+})
+
+app.delete('/items/:id/delete', (req, res) => {
+  ItemModel.findByIdAndDelete(req.params.id, err => {
+    if (err) {
+      res.status(500).send(err)
+    } else {
+      res.send({ success: true })
+    }
+  })
 })
 
 app.put('/items/update-order', (req, res) => {
@@ -28,7 +38,7 @@ app.put('/items/update-order', (req, res) => {
       item.save()
     })
   })
-  res.send()
+  res.send({ success: true })
 })
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST)

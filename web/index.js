@@ -13,8 +13,9 @@ const App = {
  */
 const loadItems = async () => {
   const response = await fetch('/items')
-  const items = await response.json()
+  const { count, items } = await response.json()
   renderItems(items)
+  renderCount(count)
   initializeSortable(itemList)
 }
 
@@ -22,6 +23,10 @@ const renderItems = items => {
   itemList.innerHTML = items
     .map(item => render(itemTemplate.innerHTML, item))
     .join('')
+}
+
+const renderCount = count => {
+  itemCount.innerHTML = `${count} items`
 }
 
 const initializeSortable = itemList => {

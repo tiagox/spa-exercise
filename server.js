@@ -16,7 +16,7 @@ app.get('/items', (req, res) => {
   ItemModel.find({})
     .sort('order')
     .exec((_, items) => {
-      res.send(items)
+      res.send({ count: items.length, items })
     })
 })
 

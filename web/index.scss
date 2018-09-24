@@ -35,6 +35,41 @@ h1 {
   line-height: 2em;
 }
 
+.image-actions,
+.actions {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  button {
+    color: $white;
+    border: none;
+    border-radius: 2em;
+    padding: 0.5em;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 40%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .cancel {
+    color: $darkBlue;
+    background-color: $lightBlue;
+  }
+
+  .edit,
+  .save {
+    background-color: $darkBlue;
+  }
+
+  .delete {
+    background-color: $red;
+  }
+}
+
 #itemCount {
   color: $white;
   background-color: $darkBlue;
@@ -47,6 +82,76 @@ h1 {
   height: 100%;
 }
 
+#itemEditor {
+  #itemForm {
+    border: solid 1px $blue;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    .fields {
+      display: flex;
+      justify-content: center;
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+
+        #image {
+          border: solid 1px $blue;
+          border-radius: 3px;
+          width: 100%;
+          height: 2rem;
+          margin-bottom: 1rem;
+          padding: 0.25rem;
+        }
+
+        #description {
+          border: solid 1px $blue;
+          border-radius: 3px;
+          width: 100%;
+          height: 9rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px $blue;
+        width: 12rem;
+        height: 12rem;
+        text-align: center;
+
+        #thumbnail {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+
+    .errors {
+      display: flex;
+      color: $red;
+      font-size: 0.75rem;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+
+    .actions {
+      justify-content: center;
+
+      button {
+        width: 10rem;
+        margin: 0 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
 #itemList {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +162,7 @@ h1 {
   background-color: $lightBlue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1%;
   margin-bottom: 1%;
@@ -76,34 +181,30 @@ h1 {
 
   .image-description {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    padding: 1.5em 0 2em;
+    font-size: 0.75rem;
+    margin: 0.5rem auto;
+    height: 7.5rem;
+    overflow-y: auto;
   }
+}
 
-  .image-actions {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+#itemControl {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
 
-    button {
-      color: $white;
-      border: none;
-      border-radius: 2em;
-      padding: 0.5em;
-      font-size: 0.75rem;
-      font-weight: bold;
-      width: 40%;
+  #itemAdd {
+    color: $white;
+    background-color: $blue;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    border-radius: 2em;
+    height: 100%;
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .edit {
-      background-color: $darkBlue;
-    }
-
-    .delete {
-      background-color: $red;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

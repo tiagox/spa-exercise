@@ -39,7 +39,51 @@ app.get('/items', (req, res) => {
     })
 })
 
-app.delete('/items/:id/delete', (req, res) => {
+app.post('/items', upload.single('image'), (req, res) => {
+  // I need to fetch the last element in the ordered list of items.
+  // All the new items will be added at the end of it.
+  ItemModel.find({})
+    .sort({ order: -1 })
+    .limit(1)
+    .exec((_, [lastItem]) => {
+      // Once I have the last item, I'll be able to set all
+      // the data in the model and then save.
+      const newItem = new ItemModel({
+        image: req.file.path,
+        description: req.body.description,
+        order: lastItem.order + 1
+      })
+      newItem.save((err, item) => {
+        if (err) {
+          res.status(500).send(err)
+        } else {
+          res.send({ success: true, item })
+        }
+      })
+    })
+})
+
+app.put('/items/:id', upload.single('image'), (req, res) => {
+  ItemModel.findById(req.params.id, (_, item) => {
+    console.log(item)
+    item.description = req.body.description
+    if (req.file) {
+      // I won't care much about a possible error in the
+      // deletion of an existing file, by now.
+      unlink(item.image, () => {})
+      item.image = req.file.path
+    }
+    item.save((err, item) => {
+      if (err) {
+        res.status(500).send(err)
+      } else {
+        res.send({ success: true, item })
+      }
+    })
+  })
+})
+
+app.delete('/items/:id', (req, res) => {
   ItemModel.findByIdAndDelete(req.params.id, err => {
     if (err) {
       res.status(500).send(err)

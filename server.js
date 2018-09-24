@@ -1,18 +1,25 @@
 require('dotenv').config()
 
-const express = require("express");
+const express = require('express')
+const mongoose = require('mongoose')
+const ItemModel = require('./models/item.schema')
 
-// Constants
-const PORT = 8080;
-const HOST = "0.0.0.0";
+mongoose.connect('mongodb://db/spa-exercise')
 
-// App
-const app = express();
+const app = express()
 
-app.get("/", (req, res) => {
-  res.send("Hello world\n");
-});
+app.use(express.json())
+app.use(express.static('dist'))
+app.use('/images', express.static('images'))
 
-app.listen(PORT, HOST);
+app.get('/items', (req, res) => {
+  ItemModel.find({})
+    .sort('order')
+    .exec((_, items) => {
+      res.send(items)
+    })
+})
 
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(process.env.APP_PORT, process.env.APP_HOST)
+
+console.log(`Running on http://${process.env.APP_HOST}:${process.env.APP_PORT}`)

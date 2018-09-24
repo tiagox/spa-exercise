@@ -49,7 +49,7 @@ app.delete('/items/:id/delete', (req, res) => {
   })
 })
 
-app.put('/items/update-order', (req, res) => {
+app.put('/items/order/update', upload.none(), (req, res) => {
   const newOrder = req.body.map(Number)
   ItemModel.find({}, (_, items) => {
     items.forEach(item => {

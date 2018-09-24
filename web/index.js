@@ -68,7 +68,7 @@ const renderCount = () => {
   itemCount.innerHTML = `${App.items.length} items`
 }
 
-const initializeSortable = itemList => {
+const initializeSortable = () => {
   // I have to destroy the sortable list in case the item was re-rendered.
   if (App.sortableList) {
     App.sortableList.destroy()
@@ -78,7 +78,7 @@ const initializeSortable = itemList => {
 }
 
 const updateOrder = async () => {
-  const response = await fetch('/items/update-order', {
+  const response = await fetch('/items/order/update', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     body: JSON.stringify(App.sortableList.toArray())

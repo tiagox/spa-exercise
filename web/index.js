@@ -13,9 +13,9 @@ const App = {
  */
 const loadItems = async () => {
   const response = await fetch('/items')
-  const { count, items } = await response.json()
+  const { items } = await response.json()
   renderItems(items)
-  renderCount(count)
+  renderCount()
   initializeSortable(itemList)
 }
 
@@ -54,8 +54,8 @@ const removeItemFromList = item => {
   renderCount()
 }
 
-const renderCount = count => {
-  itemCount.innerHTML = `${count} items`
+const renderCount = () => {
+  itemCount.innerHTML = `${itemList.children.length} items`
 }
 
 const initializeSortable = itemList => {

@@ -4,6 +4,7 @@ import Sortable from 'sortablejs'
 
 // Namespace for some global references.
 const App = {
+  items: [],
   sortableList: null
 }
 
@@ -14,19 +15,29 @@ const App = {
 const loadItems = async () => {
   const response = await fetch('/items')
   const { items } = await response.json()
-  renderItems(items)
+  App.items = items
+  renderItems()
   renderCount()
-  initializeSortable(itemList)
+  initializeSortable()
 }
 
-const renderItems = items => {
-  itemList.innerHTML = items
+const renderItems = () => {
+  // Removing all the elements in the list.
+  // This is something that could be improved.
+  // In case the list grows considerably
+  ;[...itemList.children].forEach(removeItemFromDOM)
+
+  itemList.innerHTML = App.items
     .map(item => render(itemTemplate.innerHTML, item))
     .join('')
+
+  // Attach the event listener for the actions of each item
   ;[...itemList.children].forEach(item => {
     item.querySelector('.edit').addEventListener('click', editItemCallback)
     item.querySelector('.delete').addEventListener('click', deleteItemCallback)
   })
+
+  renderCount()
 }
 
 const editItemCallback = ({ target }) => {
@@ -34,28 +45,27 @@ const editItemCallback = ({ target }) => {
 }
 
 const deleteItemCallback = async ({ target }) => {
-  const response = await fetch(`/items/${target.dataset.id}/delete`, {
+  const itemId = target.dataset.id
+  const response = await fetch(`/items/${itemId}/delete`, {
     method: 'DELETE'
   })
   const { success } = await response.json()
-  // This is not the best way to catch the parent item element.
-  const itemElement = target.parentNode.parentNode
 
   if (success) {
-    removeItemFromList(itemElement)
+    App.items = App.items.filter(item => item._id !== itemId)
+    renderItems()
     updateOrder()
   }
 }
 
-const removeItemFromList = item => {
+const removeItemFromDOM = item => {
   item.querySelector('.edit').removeEventListener('click', editItemCallback)
   item.querySelector('.delete').removeEventListener('click', deleteItemCallback)
   item.remove()
-  renderCount()
 }
 
 const renderCount = () => {
-  itemCount.innerHTML = `${itemList.children.length} items`
+  itemCount.innerHTML = `${App.items.length} items`
 }
 
 const initializeSortable = itemList => {

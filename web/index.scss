@@ -1,0 +1,54 @@
+// @import 'normalize';
+
+$red: #ff3366;
+$darkBlue: #495867;
+$blue: #577399;
+$lightBlue: #bdd5ea;
+$white: #f7f7ff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: relative;
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  background-color: $white;
+}
+
+h1 {
+  margin: 1em 0;
+  color: $blue;
+}
+
+#itemList {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.item {
+  color: $darkBlue;
+  background-color: $lightBlue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5%;
+  width: 24%;
+
+  &.sortable-ghost {
+    opacity: 0.3;
+  }
+
+  .image-container {
+    img {
+      width: 100%;
+    }
+  }
+}

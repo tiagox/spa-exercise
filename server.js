@@ -20,6 +20,17 @@ app.get('/items', (req, res) => {
     })
 })
 
+app.put('/items/update-order', (req, res) => {
+  const newOrder = req.body.map(Number)
+  ItemModel.find({}, (_, items) => {
+    items.forEach(item => {
+      item.order = newOrder.indexOf(item.order)
+      item.save()
+    })
+  })
+  res.send()
+})
+
 app.listen(process.env.APP_PORT, process.env.APP_HOST)
 
 console.log(`Running on http://${process.env.APP_HOST}:${process.env.APP_PORT}`)

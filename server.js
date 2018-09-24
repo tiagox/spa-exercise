@@ -2,11 +2,30 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
+const multer = require('multer')
+const md5 = require('md5')
+const { unlink } = require('fs')
 const ItemModel = require('./models/item.schema')
 
 mongoose.connect('mongodb://db/spa-exercise')
 
 const app = express()
+
+/**
+ * Using `multer` middleware to handle file uploads.
+ */
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: './images/',
+    /**
+     * I'm generating a standarized name just to fulfill my OCD.
+     */
+    filename: (req, file, cb) => {
+      const extension = file.originalname.split('.').pop()
+      cb(null, `${md5(Date.now())}.${extension}`)
+    }
+  })
+})
 
 app.use(express.json())
 app.use(express.static('dist'))

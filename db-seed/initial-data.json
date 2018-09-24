@@ -1,22 +1,22 @@
 [
   {
     "image": "images/30d90ec45ec85f02af6fec2b7f0b0ba1.png",
-    "description": "Look at this cat",
+    "description": "What are you looking at?",
     "order": 0
   },
   {
     "image": "images/529fcb0edbcc143042329d89b6748420.jpg",
-    "description": "Look at this cat",
+    "description": "I'm so tired, I haven't slept a wink. I'm so tired, my mind is on the blink. I wonder should I get up, and fix myself a drink",
     "order": 1
   },
   {
     "image": "images/919f1b23d3010b4aaa9b61743991f336.jpg",
-    "description": "Look at this cat",
+    "description": "Grumpy cat is grumpy",
     "order": 3
   },
   {
     "image": "images/b6c2024f82b49ed159f75678d3b1ff08.jpg",
-    "description": "Look at this cat",
+    "description": "Keyboard Cat is an Internet meme. It consists of a video from 1984 of a female cat called \"Fatso\" wearing a blue shirt and \"playing\" an upbeat rhythm on an electronic keyboard. The video was posted to YouTube under the title \"charlie schmidt's cool cats\" in June 2007.",
     "order": 2
   }
 ]

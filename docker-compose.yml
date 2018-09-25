@@ -18,10 +18,10 @@ services:
     build: ./db-seed
     links:
       - db
-  mongo-express:
-    image: mongo-express
-    restart: always
-    links:
-      - db:mongo
-    ports:
-      - 8081:8081
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   links:
+  #     - db:mongo
+  #   ports:
+  #     - 8081:8081

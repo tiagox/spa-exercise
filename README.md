@@ -61,9 +61,9 @@ The application infrastractura is based on Docker you that's all you need (oh, a
 Just clone this repository and...
 
 ```
-git clone <this-repository>
-cd <repository>
+git clone git@github.com:tiagox/spa-exercise.git
+cd spa-exercise
 docker-compose up
 ```
 
-That sould be all!
+Access to http://localhost:8080 and that sould be all!

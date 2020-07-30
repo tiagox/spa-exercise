@@ -2,3 +2,4 @@ dist/
 images/*
 node_modules/
 npm-debug.log
+.DS_Store

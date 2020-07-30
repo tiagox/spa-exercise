@@ -27,21 +27,22 @@
   },
   "homepage": "https://github.com/tiagox/spa-exercise#readme",
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
+    "@babel/runtime": "^7.10.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "husky": "^4.2.1",
+    "husky": "^4.2.5",
     "md5": "^2.2.1",
-    "mongoose": "^5.8.11",
+    "mongoose": "^5.9.26",
     "multer": "^1.4.2",
-    "mustache": "^4.0.0",
-    "node-sass": "^4.13.1",
+    "mustache": "^4.0.1",
+    "node-sass": "^4.14.1",
     "parcel-bundler": "^1.12.4",
     "precise-commits": "^1.0.2",
-    "prettier": "^1.19.1",
     "sortablejs": "^1.10.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3"
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "prettier": "^2.0.5"
   }
 }
